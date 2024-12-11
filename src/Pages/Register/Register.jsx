@@ -1,10 +1,11 @@
 import Lottie from 'lottie-react';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import animationRegisterLottie from '../../assets/register.json'
 import { FcGoogle } from "react-icons/fc";
+import AuthContext from '../../Context/AuthContext/AuthContext';
 
 const Register = () => {
-    const [error,setError] = useState('')
+    const {createUser} = useContext(AuthContext)
     const handleSignUp = e => {
         e.preventDefault()
         const form = e.target 
@@ -17,6 +18,15 @@ const Register = () => {
             alert('Your password must have a lowerCase , an upperCase letter and at least 6 character')
             return
         }
+
+        createUser(email,password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        
     }
     return (
         <div className="hero max-w-4xl mx-auto min-h-[470px]">
