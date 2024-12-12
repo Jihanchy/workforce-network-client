@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import AuthContext from '../../Context/AuthContext/AuthContext';
-
+import logo from '../../../public/favicon.png'
 const Navbar = () => {
     const [toggle, setToggle] = useState(false)
     const { user, logout } = useContext(AuthContext)
@@ -34,7 +34,9 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link className="text-3xl font-semibold">Workforce <span className='text-blue-500'>Network</span></Link>
+                <Link className="text-3xl font-semibold flex gap-1 items-center">
+                <img className='h-12 w-12' src={logo} alt="" />
+                <p>Workforce <span className='text-blue-500'>Network</span></p></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -45,8 +47,15 @@ const Navbar = () => {
                 {
                     user ?
                         <>
-                            <div>
-                                <p>{user?.photoURL}</p>
+                            <div className='flex gap-2 items-center'>
+                                {
+                                    user?.photoURL ? 
+                                    <div>
+                                        <img className='w-11 h-11 rounded-full' src={user?.photoURL} alt="" />
+                                    </div>
+                                    :
+                                    ''
+                                }
                                 <button onClick={logout} className='btn bg-blue-500 text-white rounded-md'>LogOut</button>
                             </div>
                         </>
