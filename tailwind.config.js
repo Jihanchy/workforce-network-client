@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        jobDetailBanner : "url('/src/assets/jb-detail-page.webp')"
+      }
+    },
   },
   plugins: [
     require('daisyui'),
