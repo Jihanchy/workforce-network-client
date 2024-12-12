@@ -3,9 +3,10 @@ import { BiSolidShoppingBags } from 'react-icons/bi';
 import { CiLocationOn } from 'react-icons/ci';
 import { FaDollarSign } from 'react-icons/fa';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 const JobCard = ({ job }) => {
-    const { category, hr_name, title, salaryRange, requirements, location, company_logo, company, jobType, description } = job
+    const { category,_id, hr_name, title, salaryRange, requirements, location, company_logo, company, jobType, description } = job
     return (
         <motion.div
         animate={{}}
@@ -39,7 +40,7 @@ const JobCard = ({ job }) => {
                         </span>
                         {salaryRange.currency}
                     </p>
-                    <button className="btn btn-primary px-2 rounded-md">Apply Now</button>
+                    <Link to={`/jobDetail/${_id}`}><button className="btn btn-primary px-2 rounded-md">Apply Now</button></Link>
                 </div>
             </div>
         </motion.div>

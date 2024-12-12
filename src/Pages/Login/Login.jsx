@@ -4,8 +4,13 @@ import animationLoginLottie from '../../assets/login.json'
 import { FcGoogle } from 'react-icons/fc';
 import AuthContext from '../../Context/AuthContext/AuthContext';
 import SignInGoogle from '../Shared/SignInGoogle';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
     const {createUser, signInUser} = useContext(AuthContext)
+    const location = useLocation()
+    const redirect = location?.state || '/'
+    const navigate = useNavigate()
+    console.log(location)
     const handleSignIn = e => {
         e.preventDefault()
         const form = e.target 
@@ -18,6 +23,7 @@ const Login = () => {
         .then(result => {
             console.log(result.user)
             e.target.reset()
+            navigate(redirect)
         })
         .catch(error => {
             console.log(error)

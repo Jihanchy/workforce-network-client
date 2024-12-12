@@ -9,7 +9,6 @@ const HotJobs = () => {
         axios.get('http://localhost:5000/jobs')
         .then(data => setJobs(data.data))
     }, [])
-    console.log(jobs)
     return (
         <div className='py-20'>
             <h2 className='text-center text-4xl font-bold'><span className='text-blue-500'>Jobs</span> of the Day</h2>
