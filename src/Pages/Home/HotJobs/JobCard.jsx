@@ -17,7 +17,7 @@ const JobCard = ({ job }) => {
                     <img
                         src={company_logo}
                         alt="Shoes"
-                        className="rounded-xl w-16 border-2 p-0" />
+                        className="rounded-xl w-16 object-cover p-0" />
                 </figure>
                 <div>
                     <h3 className='text-xl font-semibold'>{company}</h3>
