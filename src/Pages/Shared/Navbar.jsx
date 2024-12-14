@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import AuthContext from '../../Context/AuthContext/AuthContext';
-import logo from '../../../public/favicon.png'
+import logo from '/favicon.png'
 const Navbar = () => {
     const [toggle, setToggle] = useState(false)
     const { user, logout } = useContext(AuthContext)
     const links =
         <>
             <li><NavLink to='/'>Home</NavLink></li>
+            <li><NavLink to='/myApplications'>My Applications</NavLink></li>
             <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
         </>
     return (
