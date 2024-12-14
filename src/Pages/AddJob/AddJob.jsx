@@ -16,11 +16,11 @@ const AddJob = () => {
         console.log(newJob)
 
         fetch('http://localhost:5000/jobs', {
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(newJob)
+            body: JSON.stringify(newJob)
         })
             .then(res => res.json())
             .then(data => {
