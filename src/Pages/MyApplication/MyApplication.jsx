@@ -7,7 +7,7 @@ const MyApplication = () => {
 
     const [jobs, setJobs] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/job-applications?email=${user.email}`)
+        axios.get(`http://localhost:5000/job-applications?email=${user.email}`, { withCredentials: true })
             .then(data => setJobs(data.data))
     }, [user.email])
     return (
@@ -18,7 +18,7 @@ const MyApplication = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            
+
                             <th>Name</th>
                             <th>Job</th>
                             <th>Favorite Color</th>
@@ -54,9 +54,9 @@ const MyApplication = () => {
                                 </th>
                             </tr>)
                         }
-                        
+
                     </tbody>
-                    
+
                 </table>
             </div>
         </div>

@@ -5,30 +5,36 @@ import { FcGoogle } from 'react-icons/fc';
 import AuthContext from '../../Context/AuthContext/AuthContext';
 import SignInGoogle from '../Shared/SignInGoogle';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const Login = () => {
-    const {createUser, signInUser} = useContext(AuthContext)
+    const { createUser, signInUser } = useContext(AuthContext)
     const location = useLocation()
     const redirect = location?.state || '/'
     const navigate = useNavigate()
     console.log(location)
     const handleSignIn = e => {
         e.preventDefault()
-        const form = e.target 
-        const email = form.email.value 
+        const form = e.target
+        const email = form.email.value
         const password = form.password.value
-        const user = {email,password}
+        const user = { email, password }
         console.log(user)
 
-        signInUser(email,password)
-        .then(result => {
-            console.log(result.user)
-            e.target.reset()
-            navigate(redirect)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-        
+        signInUser(email, password)
+            .then(result => {
+                console.log(result.user)
+                e.target.reset()
+                const user = { email: email }
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                // navigate(redirect)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
     }
     return (
         <div className="hero max-w-4xl mx-auto min-h-[470px]">
@@ -38,7 +44,7 @@ const Login = () => {
                 </div>
                 <div className="card bg-base-100 text-center w-full max-w-sm shrink-0">
                     <h1 className="text-4xl font-bold m-8">Login now</h1>
-                    <SignInGoogle/>
+                    <SignInGoogle />
                     {/* form */}
                     <form onSubmit={handleSignIn} className="card-body px-0 py-2">
                         <div className="form-control">
