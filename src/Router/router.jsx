@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             {
                 path:'/jobDetail/:id',
                 element:<PrivateRoute><JobDetail/></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+                loader:({params})=>fetch(`https://workforce-network-server.vercel.app/jobs/${params.id}`)
             },
             {
                 path:'/jobApply/:id',

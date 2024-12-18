@@ -6,7 +6,7 @@ const HotJobs = () => {
     const [jobs, setJobs] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/jobs')
+        axios.get('https://workforce-network-server.vercel.app/jobs')
         .then(data => setJobs(data.data))
     }, [])
     return (

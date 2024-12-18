@@ -8,7 +8,7 @@ const MyApplication = () => {
     const [jobs, setJobs] = useState([])
     const axiosSecure = useAxiosSecure()
     useEffect(() => {
-        // axios.get(`http://localhost:5000/job-applications?email=${user.email}`, { withCredentials: true })
+        // axios.get(`https://workforce-network-server.vercel.app/job-applications?email=${user.email}`, { withCredentials: true })
         //     .then(data => setJobs(data.data))
 
         axiosSecure.get(`/job-applications?email=${user.email}`)

@@ -23,7 +23,7 @@ const JobApply = () => {
             resume
         }
 
-        axios.post('http://localhost:5000/job-applications',applications)
+        axios.post('https://workforce-network-server.vercel.app/job-applications',applications)
         .then(data => {
             if(data.data.insertedId){
                 Swal.fire({
