@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const MyApplication = () => {
     const { user } = useAuth()
-
     const [jobs, setJobs] = useState([])
+    const axiosSecure = useAxiosSecure()
     useEffect(() => {
-        axios.get(`http://localhost:5000/job-applications?email=${user.email}`, { withCredentials: true })
-            .then(data => setJobs(data.data))
+        // axios.get(`http://localhost:5000/job-applications?email=${user.email}`, { withCredentials: true })
+        //     .then(data => setJobs(data.data))
+
+        axiosSecure.get(`/job-applications?email=${user.email}`)
+        .then(res => setJobs(res.data))
     }, [user.email])
+    
     return (
         <div>
             <h2>My Applications : {jobs.length}</h2>

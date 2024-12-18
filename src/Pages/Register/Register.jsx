@@ -14,7 +14,7 @@ const Register = () => {
         const email = form.email.value 
         const password = form.password.value
         const user = {name,email,password}
-        console.log(user)
+        // console.log(user)
         if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
             alert('Your password must have a lowerCase , an upperCase letter and at least 6 character')
             return
@@ -22,11 +22,11 @@ const Register = () => {
 
         createUser(email,password)
         .then(result => {
-            console.log(result.user)
+            // console.log(result.user)
             e.target.reset()
         })
         .catch(error => {
-            console.log(error)
+            // console.log(error)
         })
         
     }

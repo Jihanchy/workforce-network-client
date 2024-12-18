@@ -1,38 +1,31 @@
 import Lottie from 'lottie-react';
 import React, { useContext } from 'react';
 import animationLoginLottie from '../../assets/login.json'
-import { FcGoogle } from 'react-icons/fc';
 import AuthContext from '../../Context/AuthContext/AuthContext';
 import SignInGoogle from '../Shared/SignInGoogle';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 const Login = () => {
-    const { createUser, signInUser } = useContext(AuthContext)
+    const { signInUser } = useContext(AuthContext)
     const location = useLocation()
     const redirect = location?.state || '/'
     const navigate = useNavigate()
-    console.log(location)
+    // console.log(location)
     const handleSignIn = e => {
         e.preventDefault()
         const form = e.target
         const email = form.email.value
         const password = form.password.value
         const user = { email, password }
-        console.log(user)
+        // console.log(user)
 
         signInUser(email, password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 e.target.reset()
-                const user = { email: email }
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
-                    .then(res => {
-                        console.log(res.data)
-                    })
-                // navigate(redirect)
+                navigate(redirect)
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
             })
 
     }

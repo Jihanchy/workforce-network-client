@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const ViewApplication = () => {
     const applications = useLoaderData()
     const handleApplicationStatus = (e, id) => {
-        console.log(e.target.value, id)
+        // console.log(e.target.value, id)
         const data = {
             status: e.target.value
         }
